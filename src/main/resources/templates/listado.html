@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<link href="css/style.css" type="text/css" rel="stylesheet"
+	media="screen,projection" />
+<title>Lista contribuyentes</title>
+</head>
+<body>
+
+	<div class="section no-pad-bot" id="index-banner">
+
+		<div class="container ">
+				<table class="col s6 card grey lighten-4">
+					<thead>
+						<tr>
+							<th>Codigo de contribuyente</th>
+							<th>Codigo de importancia</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>NIT</th>
+							<th>Fecha de ingreso</th>
+						</tr>
+					</thead>
+						<th:block th:each="contribuyente, row: ${contribuyentes}">
+							<tr>
+								<td th:text="${contribuyente.contribuyente}"></td>
+								<td th:text="${contribuyente.importancia}"></td>
+								<td th:text="${contribuyente.nombre}"></td>
+								<td th:text="${contribuyente.apellido}"></td>
+								<td th:text="${contribuyente.nit}"></td>
+								<td th:text="${#dates.format(contribuyente.fecha, 'dd/MM/yyyy')}"></td>
+							</tr>
+						</th:block>
+				</table>
+			<div class="row center">
+				<a class="btn waves-effect center" th:href="@{/inicio}">
+								Regresar<i class="material-icons left">arrow_back</i>
+					</a>
+					
+			</div>
+
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<script src="js/init.js"></script>
+</body>
+</html>
