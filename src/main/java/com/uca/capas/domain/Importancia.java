@@ -1,8 +1,12 @@
 package com.uca.capas.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,8 @@ public class Importancia {
 	@Column(name="s_importancia")
 	private String simportancia;
 
+	@OneToMany(mappedBy="importancia", cascade=CascadeType.ALL)
+	private List<Contribuyente> contribuyentes;
 	
 	public Importancia() {
 		super();

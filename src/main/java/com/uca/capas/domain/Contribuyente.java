@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -18,8 +21,9 @@ public class Contribuyente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer contribuyente;
 	
-	@Column(name="c_importancia")
-	private Integer importancia;
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "c_importancia")
+	private Importancia importancia;
 	
 	@Column(name="s_nombre")
 	@NotEmpty(message="El campo no puede estar vacio")
@@ -50,11 +54,11 @@ public class Contribuyente {
 		this.contribuyente = contribuyente;
 	}
 
-	public Integer getImportancia() {
+	public Importancia getImportancia() {
 		return importancia;
 	}
 
-	public void setImportancia(Integer importancia) {
+	public void setImportancia(Importancia importancia) {
 		this.importancia = importancia;
 	}
 
